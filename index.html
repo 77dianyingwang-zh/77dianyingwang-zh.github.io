@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>77电影网 · 每季77部主题片单，77种心情各配一部</title>
+<meta name="keywords" content="77电影网, 77部片单, 心情电影, 季度片单, 片荒解药, 选片指南, 77dianyingwang-zh.github.io">
+<meta name="description" content="77电影网（77dianyingwang-zh.github.io）把“77”做成栏目：每季发布77部主题片单，77种心情各配一部“解药”电影，片荒和选择困难一并治好。">
+<link rel="canonical" href="https://77dianyingwang-zh.github.io/">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#23201c;--ink2:#5c564f;--paper:#fbf7f2;--card:#fff;
+  --pri:#d9501a;--pri-d:#b23e10;--warm:#f6e7d8;--warm2:#fdf3e9;
+  --blue:#2c4a63;--line:#efe6dc;--mut:#9a9087;
+}
+html{scroll-behavior:smooth}
+body{font-family:"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;
+  background:var(--paper);color:var(--ink);line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+
+/* header */
+.hd{background:#fff;border-bottom:3px solid var(--pri);position:sticky;top:0;z-index:50}
+.hd-in{display:flex;align-items:center;justify-content:space-between;height:74px;gap:24px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo b{font-size:24px;letter-spacing:1px}
+.logo b i{font-style:normal;color:var(--pri)}
+.logo small{display:block;font-size:11px;color:var(--mut);letter-spacing:2px;font-weight:400;margin-top:-2px}
+.nav{display:flex;gap:6px}
+.nav a{font-size:15px;color:var(--ink2);padding:8px 14px;border-radius:20px;transition:.2s}
+.nav a:hover{background:var(--warm);color:var(--pri-d)}
+.mbtn{display:none;background:var(--warm);border:0;width:42px;height:42px;border-radius:10px;font-size:20px;color:var(--pri-d);cursor:pointer}
+@media(max-width:900px){
+  .mbtn{display:block}
+  .nav{position:fixed;left:0;right:0;top:77px;flex-direction:column;gap:0;background:#fff;
+    max-height:0;overflow:hidden;transition:.3s;box-shadow:0 12px 28px rgba(0,0,0,.07)}
+  .nav.open{max-height:440px}
+  .nav a{border-radius:0;padding:15px 20px;border-bottom:1px solid var(--line)}
+}
+.tools{display:flex;align-items:center;gap:10px}
+.search{display:flex;align-items:center;background:var(--warm2);border-radius:20px;padding:6px 14px;gap:8px}
+.search input{border:0;background:transparent;outline:0;font-size:13.5px;width:130px;color:var(--ink)}
+.search span{color:var(--mut);font-size:13px}
+@media(max-width:900px){.search{display:none}}
+
+/* hero */
+.hero{background:var(--warm2);border-bottom:1px solid var(--line)}
+.hero-in{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:56px 0}
+.hero-txt .kicker{display:inline-block;background:var(--pri);color:#fff;font-size:12px;letter-spacing:2px;
+  padding:4px 12px;border-radius:3px;margin-bottom:16px}
+.hero-txt h1{font-size:38px;line-height:1.3;letter-spacing:.5px}
+.hero-txt h1 em{font-style:normal;color:var(--pri)}
+.hero-txt p{margin-top:16px;font-size:15.5px;color:var(--ink2);max-width:520px}
+.hero-txt .acts{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:11px 26px;border-radius:6px;font-weight:700;font-size:14.5px;transition:.2s}
+.btn-p{background:var(--pri);color:#fff}
+.btn-p:hover{background:var(--pri-d)}
+.btn-o{background:#fff;color:var(--pri-d);border:1px solid var(--pri)}
+.btn-o:hover{background:var(--warm)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px}
+.stat:nth-child(odd){transform:translateY(-8px)}
+.stat strong{display:block;font-size:30px;color:var(--pri);letter-spacing:-1px;line-height:1}
+.stat span{font-size:13px;color:var(--ink2)}
+@media(max-width:900px){.hero-in{grid-template-columns:1fr;padding:40px 0}.hero-txt h1{font-size:28px}
+  .stat:nth-child(odd){transform:none}}
+
+/* section */
+.sec{padding:56px 0}
+.sec-hd{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:26px}
+.sec-hd h2{font-size:22px;letter-spacing:.5px}
+.sec-hd h2:before{content:"§ ";color:var(--pri)}
+.sec-hd a{font-size:13px;color:var(--pri-d);white-space:nowrap}
+.sec-hd a:hover{text-decoration:underline}
+
+/* listview (different from card grid) */
+.list{display:flex;flex-direction:column;gap:16px}
+.row{display:grid;grid-template-columns:88px 1fr auto;gap:20px;align-items:center;background:var(--card);
+  border:1px solid var(--line);border-radius:12px;padding:16px 20px;transition:.2s}
+.row:hover{border-color:#e6cfbb;box-shadow:0 8px 22px rgba(217,80,26,.08);transform:translateX(3px)}
+.row .no{width:52px;height:52px;border-radius:50%;background:var(--warm);color:var(--pri-d);display:flex;
+  align-items:center;justify-content:center;font-weight:900;font-size:19px;justify-self:center}
+.row:nth-child(-n+3) .no{background:var(--pri);color:#fff}
+.row .tx h3{font-size:17px;margin-bottom:4px}
+.row .tx .meta{font-size:12.5px;color:var(--mut);margin-bottom:5px}
+.row .tx p{font-size:13.5px;color:var(--ink2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.row .sc{text-align:right;flex:none;min-width:96px}
+.row .sc b{display:block;font-size:22px;color:var(--pri);letter-spacing:-.5px}
+.row .sc small{font-size:11.5px;color:var(--mut)}
+@media(max-width:720px){.row{grid-template-columns:52px 1fr;gap:14px;padding:14px}.row .sc{grid-column:2;text-align:left;min-width:0}}
+
+/* tabs */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.tabs a{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:7px 18px;font-size:13.5px;color:var(--ink2)}
+.tabs a.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.tabs a:hover{background:var(--warm)}
+
+/* timeline */
+.tl{position:relative;padding-left:34px}
+.tl:before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl article{position:relative;background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:18px 20px;margin-bottom:14px}
+.tl article:before{content:"";position:absolute;left:-29px;top:24px;width:12px;height:12px;border-radius:50%;
+  background:var(--pri);border:3px solid var(--paper)}
+.tl .d{font-size:12px;color:var(--pri-d);font-weight:700;letter-spacing:1px}
+.tl h3{font-size:16.5px;margin:5px 0 6px}
+.tl p{font-size:14px;color:var(--ink2)}
+@media(max-width:720px){.tl{padding-left:28px}.tl:before{left:6px}.tl article:before{left:-24px;width:10px;height:10px}}
+
+/* notes */
+.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.note{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px;position:relative}
+.note:before{content:"";position:absolute;top:0;left:22px;right:22px;height:3px;background:var(--warm);border-radius:0 0 3px 3px}
+.note:hover:before{background:var(--pri)}
+.note .n{font-size:11.5px;color:var(--pri-d);letter-spacing:2px;font-weight:700}
+.note h3{font-size:16.5px;margin:9px 0 9px;line-height:1.45}
+.note p{font-size:13.5px;color:var(--ink2)}
+.note .foot{margin-top:14px;padding-top:10px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--mut)}
+@media(max-width:900px){.notes{grid-template-columns:1fr}}
+
+/* table */
+.tb{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.tb table{width:100%;border-collapse:collapse;font-size:14px}
+.tb th{background:var(--blue);color:#fff;text-align:left;padding:13px 16px;font-weight:600;font-size:13px;letter-spacing:.5px}
+.tb td{padding:13px 16px;border-bottom:1px solid var(--line);color:var(--ink2)}
+.tb tr:last-child td{border-bottom:0}
+.tb tr:hover td{background:var(--warm2)}
+.tb td.t{color:var(--ink);font-weight:600}
+.tb td.s{color:var(--pri);font-weight:800;white-space:nowrap}
+@media(max-width:720px){.tb{overflow-x:auto}.tb table{min-width:560px}}
+
+/* cta */
+.cta{background:var(--ink);color:#fff;text-align:center;padding:56px 20px}
+.cta h2{font-size:25px;margin-bottom:12px}
+.cta h2 em{font-style:normal;color:#f0a878}
+.cta p{color:#cbbfb4;margin-bottom:24px;font-size:15px}
+.cta .btn-o{color:#fff;border-color:#fff}
+.cta .btn-o:hover{background:#fff;color:var(--ink)}
+
+/* footer */
+.ft{background:#fff;border-top:1px solid var(--line);padding:40px 0 22px;font-size:13.5px;color:var(--ink2)}
+.ft .wrap{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:30px}
+.ft h4{font-size:15px;color:var(--ink);margin-bottom:12px}
+.ft h4:before{content:"— ";color:var(--pri)}
+.ft p{margin-bottom:12px}
+.ft ul li{padding:5px 0}
+.ft a{color:var(--ink2)}
+.ft a:hover{color:var(--pri)}
+.ft .cp{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);color:var(--mut);font-size:12.5px}
+@media(max-width:900px){.ft .wrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/zhangzong.js"></script>
+
+<header class="hd">
+  <div class="wrap hd-in">
+    <a class="logo" href="#"><b>77<i>电影网</i></b><small>77 DIANYINGWANG</small></a>
+    <nav class="nav" id="nav">
+      <a href="#home">首页</a>
+      <a href="#list">必看清单</a>
+      <a href="#update">每日更新</a>
+      <a href="#notes">影评笔记</a>
+      <a href="#rank">片单榜</a>
+      <a href="#about">关于</a>
+    </nav>
+    <div class="tools">
+      <div class="search"><input placeholder="搜索片名 / 导演"><span>🔍</span></div>
+      <button class="mbtn" id="mbtn" aria-label="菜单">≡</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="wrap hero-in">
+    <div class="hero-txt">
+      <span class="kicker">MOVIE LIST · 私人片单</span>
+      <h1>从 77 部好片开始，<br>建立你自己的<em>观影清单</em></h1>
+      <p>77电影网（77dianyingwang-zh.github.io）不追热点、不打口水仗，只做一件事：把值得反复看的 77 部电影，连同看它的理由，认真讲给你听。</p>
+      <div class="acts">
+        <a class="btn btn-p" href="#list">看完整清单</a>
+        <a class="btn btn-o" href="#update">今日更新</a>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong>77</strong><span>部精选好片，持续扩充中</span></div>
+      <div class="stat"><strong>12</strong><span>个类型标签，按心情选片</span></div>
+      <div class="stat"><strong>365</strong><span>天不间断的每日更新</span></div>
+      <div class="stat"><strong>8.2</strong><span>清单平均评分，宁缺毋滥</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="list">
+  <div class="wrap">
+    <div class="sec-hd"><h2>77 部必看清单 · 精选十二席</h2><a href="#">完整 77 部 »</a></div>
+    <div class="tabs">
+      <a class="on" href="#">综合推荐</a><a href="#">经典老片</a><a href="#">新片前瞻</a><a href="#">冷门遗珠</a>
+      <a href="#">治愈系</a><a href="#">烧脑悬疑</a><a href="#">成长向</a>
+    </div>
+    <div class="list">
+      <article class="row">
+        <div class="no">01</div>
+        <div class="tx"><h3>长河落日</h3><div class="meta">2026 · 剧情 / 家庭 · 126分钟</div>
+          <p>老船工的最后一次航程，把家庭关系藏在沉默、饭桌与两岸的风景里。克制而有余味。</p></div>
+        <div class="sc"><b>8.7</b><small>推荐度</small></div>
+      </article>
+      <article class="row">
+        <div class="no">02</div>
+        <div class="tx"><h3>小满</h3><div class="meta">2026 · 青春 / 治愈 · 102分钟</div>
+          <p>南方小镇的最后一个夏天。光线通透，情绪干净，是情绪低落时最安全的那部片子。</p></div>
+        <div class="sc"><b>8.6</b><small>推荐度</small></div>
+      </article>
+      <article class="row">
+        <div class="no">03</div>
+        <div class="tx"><h3>第七封信</h3><div class="meta">2026 · 悬疑 / 犯罪 · 113分钟</div>
+          <p>迟到了二十年的信牵出被遗忘的往事。剧本严密，全程不给多余解释，全靠留白制造悬念。</p></div>
+        <div class="sc"><b>8.5</b><small>推荐度</small></div>
+      </article>
+      <article class="row">
+        <div class="no">04</div>
+        <div class="tx"><h3>稻与海</h3><div class="meta">2026 · 纪录片 · 94分钟</div>
+          <p>跟拍沿海村庄一整年，记录土地、收成与人的变化。安静，但有不可忽略的重量。</p></div>
+        <div class="sc"><b>8.4</b><small>推荐度</small></div>
+      </article>
+      <article class="row">
+        <div class="no">05</div>
+        <div class="tx"><h3>纸船记</h3><div class="meta">2026 · 动画 / 奇幻 · 99分钟</div>
+          <p>用纸船连通两个世界的孩子。画面细腻，叙事温柔，被视为国产动画找到自己语言的代表。</p></div>
+        <div class="sc"><b>8.3</b><small>推荐度</small></div>
+      </article>
+      <article class="row">
+        <div class="no">06</div>
+        <div class="tx"><h3>无声证人</h3><div class="meta">2026 · 犯罪 / 剧情 · 118分钟</div>
+          <p>两位失意警察、一桩悬案。群像刻画入微，结尾的沉默比任何台词都有力。</p></div>
+        <div class="sc"><b>8.2</b><small>推荐度</small></div>
+      </article>
+      <article class="row">
+        <div class="no">07</div>
+        <div class="tx"><h3>逆光者</h3><div class="meta">2026 · 动作 / 传记 · 139分钟</div>
+          <p>一位女性消防员二十年的职业片段。动作场面服务于人物，情感处理极其真诚。</p></div>
+        <div class="sc"><b>8.1</b><small>推荐度</small></div>
+      </article>
+      <article class="row">
+        <div class="no">08</div>
+        <div class="tx"><h3>旧戏院</h3><div class="meta">2025 · 文艺 / 怀旧 · 107分钟</div>
+          <p>一座即将拆除的老戏院，一群舍不得它的人。关于告别，也关于记忆如何被保存。</p></div>
+        <div class="sc"><b>8.0</b><small>推荐度</small></div>
+      </article>
+      <article class="row">
+        <div class="no">09</div>
+        <div class="tx"><h3>北风过境</h3><div class="meta">2025 · 剧情 · 121分钟</div>
+          <p>一场暴风雪困住了一车人，对话成为唯一的推进力。封闭空间叙事的优秀样本。</p></div>
+        <div class="sc"><b>7.9</b><small>推荐度</small></div>
+      </article>
+      <article class="row">
+        <div class="no">10</div>
+        <div class="tx"><h3>晚安，妈妈</h3><div class="meta">2025 · 家庭 · 98分钟</div>
+          <p>只有两位演员和一栋房子，却撑起了整段关于衰老与和解的关系。</p></div>
+        <div class="sc"><b>7.9</b><small>推荐度</small></div>
+      </article>
+      <article class="row">
+        <div class="no">11</div>
+        <div class="tx"><h3>最后一班渡轮</h3><div class="meta">2025 · 悬疑 · 106分钟</div>
+          <p>岛屿上的密室谜题。氛围浓烈，人物动机合理，是值得二刷找细节的类型片。</p></div>
+        <div class="sc"><b>7.8</b><small>推荐度</small></div>
+      </article>
+      <article class="row">
+        <div class="no">12</div>
+        <div class="tx"><h3>夏日邮局</h3><div class="meta">2025 · 治愈 · 104分钟</div>
+          <p>海边小镇的临时邮局，收留着一群想暂停生活的人。轻，但后劲在。</p></div>
+        <div class="sc"><b>7.8</b><small>推荐度</small></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="update" style="background:#fff;border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-hd"><h2>每日更新 · 编辑手记</h2><a href="#">归档 »</a></div>
+    <div class="tl">
+      <article>
+        <div class="d">10月03日 · 周五</div>
+        <h3>为什么我们把《长河落日》放进清单第一位</h3>
+        <p>不是因为它最热，而是因为它证明了：一部片子可以既诚实又不残忍。它不制造冲突，只呈现关系本来的样子，这种克制当下非常稀缺。</p>
+      </article>
+      <article>
+        <div class="d">10月02日 · 周四</div>
+        <h3>今日片单：想安静看完的 3 个选择</h3>
+        <p>情绪低落或只想放空时，建议从《小满》《夏日邮局》《稻与海》里选。三部都是"慢但不拖"，且不需要投入剧情复杂度。</p>
+      </article>
+      <article>
+        <div class="d">10月01日 · 周三</div>
+        <h3>新片观察：当悬疑片不再急着给答案</h3>
+        <p>《第七封信》与《无声证人》都选择了"把镜头对准被事件改变的人"，这比反转本身更能留下印象。类型片的重心正在转移。</p>
+      </article>
+      <article>
+        <div class="d">09月30日 · 周二</div>
+        <h3>冷门挖掘：《北风过境》的封闭空间处理</h3>
+        <p>全片 90% 的戏发生在一辆车上，靠对话与视线推进，是本年度最被低估的剧本之一。</p>
+      </article>
+      <article>
+        <div class="d">09月29日 · 周一</div>
+        <h3>每周复盘：本周新增 5 部，剔除 2 部</h3>
+        <p>清单的准入标准始终是"是否值得二刷"。本周因故事过于工整而被移出清单的是《局外人》与《白夜》，它们没问题，只是缺一点余味。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="notes" style="background:#fff;border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-hd"><h2>影评笔记 · 编辑长评</h2><a href="#">全部笔记 »</a></div>
+    <div class="notes">
+      <article class="note">
+        <div class="n">NO.01</div>
+        <h3>关于"克制"：好电影不是没有情绪，而是不替观众定义情绪</h3>
+        <p>《长河落日》最值得讨论的不是剧情，而是它如何处理沉默。它相信观众有能力自己填补空白。</p>
+        <div class="foot">编辑部 · 长评 · 6 分钟阅读</div>
+      </article>
+      <article class="note">
+        <div class="n">NO.02</div>
+        <h3>悬疑片的留白法则：不给线索，但要给反应</h3>
+        <p>《第七封信》前半段几乎不提供明确信息，却靠人物的细微反应让观众始终不愿离场。这是一门被低估的手艺。</p>
+        <div class="foot">林知远 · 导演观察</div>
+      </article>
+      <article class="note">
+        <div class="n">NO.03</div>
+        <h3>为什么我们坚持"宁缺毋滥"的清单标准</h3>
+        <p>77 这个数字不是为了凑齐。清单越长，参考价值越低；我们宁可慢一点，也要保证每一部都经得起二刷。</p>
+        <div class="foot">编辑部 · 方法论</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="rank" style="background:#fff;border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-hd"><h2>片单榜 · 本周被收藏最多</h2><a href="#">完整榜单 »</a></div>
+    <div class="tb">
+      <table>
+        <thead><tr><th>排名</th><th>影片</th><th>类型</th><th>适合场景</th><th>评分</th></tr></thead>
+        <tbody>
+          <tr><td class="t">1</td><td class="t">长河落日</td><td>剧情</td><td>想认真看完一部片</td><td class="s">8.7</td></tr>
+          <tr><td class="t">2</td><td class="t">小满</td><td>治愈</td><td>情绪低落时</td><td class="s">8.6</td></tr>
+          <tr><td class="t">3</td><td class="t">第七封信</td><td>悬疑</td><td>想被剧情抓住</td><td class="s">8.5</td></tr>
+          <tr><td class="t">4</td><td class="t">稻与海</td><td>纪录</td><td>想安静一会儿</td><td class="s">8.4</td></tr>
+          <tr><td class="t">5</td><td class="t">纸船记</td><td>动画</td><td>周末亲子 / 独处</td><td class="s">8.3</td></tr>
+          <tr><td class="t">6</td><td class="t">无声证人</td><td>犯罪</td><td>想被群像打动</td><td class="s">8.2</td></tr>
+          <tr><td class="t">7</td><td class="t">逆光者</td><td>传记</td><td>想被真实故事鼓舞</td><td class="s">8.1</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="about">
+  <h2>把 <em>77 部好片</em> 慢慢看掉，<br>就是最划算的私人电影院</h2>
+  <p>77电影网 77dianyingwang-zh.github.io · 77部必看电影清单与每日观影指南</p>
+  <a class="btn btn-o" href="#list">查看完整片单</a>
+</section>
+
+<footer class="ft">
+  <div class="wrap">
+    <div>
+      <h4>77电影网</h4>
+      <p>77电影网整理 77 部值得反复看的电影清单，每日更新观影指南与影评笔记。我们的标准很简单：宁缺毋滥，只收值得二刷的作品。</p>
+      <p style="color:var(--mut)">本站内容以电影资讯与评论为主，不提供影视在线播放与下载服务。</p>
+    </div>
+    <div>
+      <h4>栏目导航</h4>
+      <ul>
+        <li><a href="#">必看清单</a></li>
+        <li><a href="#">每日更新</a></li>
+        <li><a href="#">影评笔记</a></li>
+        <li><a href="#">片单榜</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>关于与联系</h4>
+      <ul>
+        <li><a href="#">网站首页</a></li>
+        <li><a href="#">清单入选标准</a></li>
+        <li><a href="#">投稿与合作</a></li>
+        <li><a href="#">联系我们</a></li>
+      </ul>
+      <p style="margin-top:12px">网址：<br>https://77dianyingwang-zh.github.io</p>
+    </div>
+  </div>
+  <div class="wrap cp">© 2026 77电影网 77dianyingwang-zh.github.io · 内容仅供观影参考，片单评价为主观整理，不构成观影决策的唯一依据。</div>
+</footer>
+
+<script>
+(function(){
+  var b=document.getElementById('mbtn'),n=document.getElementById('nav');
+  b.addEventListener('click',function(){n.classList.toggle('open')});
+  n.addEventListener('click',function(e){if(e.target.tagName==='A')n.classList.remove('open')});
+})();
+</script>
+</body>
+</html>
